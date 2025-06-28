@@ -1,0 +1,9 @@
+<div class="login-container">
+    <h2>Admin Login</h2>
+    <form (ngSubmit)="login()">
+        <input type="text" placeholder="User ID" [(ngModel)]="userId" name="userId" required />
+        <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required />
+        <button type="submit">Login</button>
+        <div class="error" *ngIf="error">{{ error }}</div>
+    </form>
+</div>
