@@ -32,6 +32,8 @@ export class AdminComponent {
   slots = getSlots();
   bookingService = inject(BookingService);
 
+  showCancelConfirm: { slot: string; booking: Booking } | null = null;
+
   get bookingsForSelectedDate(): Booking[] {
     return this.bookingService.getBookingsForDate(this.selectedDate);
   }
@@ -60,5 +62,19 @@ export class AdminComponent {
 
   get bookedSlots(): number {
     return this.slots.filter((slot) => this.getSlotBooking(slot)).length;
+  }
+
+  confirmCancelSlot() {
+    if (this.showCancelConfirm) {
+      this.bookingService.cancelSlot(
+        this.selectedDate,
+        this.showCancelConfirm.slot
+      );
+      this.showCancelConfirm = null;
+    }
+  }
+
+  cancelCancelSlot() {
+    this.showCancelConfirm = null;
   }
 }

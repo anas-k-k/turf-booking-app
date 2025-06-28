@@ -29,8 +29,23 @@
                 <div *ngIf="getSlotBooking(slot)" class="booking-info">
                     <span class="name">{{ getSlotBooking(slot)?.name }}</span>
                     <span class="phone">{{ getSlotBooking(slot)?.phone }}</span>
+                    <button class="cancel-btn"
+                        (click)="showCancelConfirm = { slot: slot, booking: getSlotBooking(slot)! }">Cancel</button>
                 </div>
                 <div *ngIf="!getSlotBooking(slot)" class="no-booking">Available</div>
+            </div>
+        </div>
+
+        <div class="modal" *ngIf="showCancelConfirm">
+            <div class="modal-content">
+                <h3>Cancel Booking</h3>
+                <p>Are you sure you want to cancel the booking for <b>{{ to12HourFormat(showCancelConfirm.slot) }}</b>?
+                </p>
+                <p>Name: {{ showCancelConfirm.booking.name }}<br>Phone: {{ showCancelConfirm.booking.phone }}</p>
+                <div class="modal-actions">
+                    <button (click)="confirmCancelSlot()">Yes, Cancel</button>
+                    <button (click)="cancelCancelSlot()">No</button>
+                </div>
             </div>
         </div>
     </div>

@@ -55,6 +55,22 @@ export class BookingService {
     this.saveBookings();
   }
 
+  cancelSlot(date: string, slot: string) {
+    // Remove slot from bookings
+    for (const booking of this.bookings) {
+      if (booking.date === date && booking.slots.includes(slot)) {
+        booking.slots = booking.slots.filter((s) => s !== slot);
+      }
+    }
+    // Remove empty bookings
+    this.bookings = this.bookings.filter((b) => b.slots.length > 0);
+    // Mark slot as available
+    if (this.slotStatus[date]) {
+      this.slotStatus[date][slot] = 'available';
+    }
+    this.saveBookings();
+  }
+
   isSlotBooked(date: string, slot: string): boolean {
     return this.slotStatus[date]?.[slot] === 'booked';
   }
