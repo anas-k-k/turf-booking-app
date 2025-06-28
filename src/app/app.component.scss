@@ -1,0 +1,33 @@
+main {
+  min-height: 100vh;
+  /* Soccer turf background: alternating green stripes and white field lines */
+  background: repeating-linear-gradient(
+      90deg,
+      #a5d6a7 0px,
+      #a5d6a7 60px,
+      #81c784 60px,
+      #81c784 120px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 59px,
+      #fff 59px,
+      #fff 61px,
+      transparent 61px,
+      transparent 119px
+    );
+  background-size: 120px 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+}
+h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px #2e7d32;
+}
