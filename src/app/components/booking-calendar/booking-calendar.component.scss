@@ -43,7 +43,7 @@
   border: 2px solid #e0e0e0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   position: relative;
-  font-size: 0.82rem;
+  font-size: 0.75rem;
   margin: 0 auto;
   padding: 0;
   gap: 0.15rem;
@@ -55,7 +55,7 @@
   margin-bottom: 0.1rem;
 }
 .slot span {
-  font-size: 0.82rem;
+  font-size: 0.75rem;
   margin: 0;
   line-height: 1.1;
   text-align: center;
@@ -182,4 +182,33 @@
 }
 .modal-content button:hover {
   filter: brightness(0.95);
+}
+
+@media (max-width: 600px) {
+  .calendar-container {
+    max-width: 98vw;
+    padding: 0.5rem;
+  }
+  .slots-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.4rem;
+  }
+  .slot {
+    width: 48px;
+    height: 48px;
+    font-size: 0.75rem;
+  }
+  .slot svg {
+    width: 14px;
+    height: 14px;
+  }
+  .booking-form input,
+  .booking-form button {
+    font-size: 0.95rem;
+    padding: 0.4rem 0.7rem;
+  }
+  .modal-content {
+    min-width: 160px;
+    padding: 0.7rem 0.5rem;
+  }
 }
