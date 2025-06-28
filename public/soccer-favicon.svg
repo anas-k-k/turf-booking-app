@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <pattern id="turf" patternUnits="userSpaceOnUse" width="4" height="4">
+      <rect width="4" height="4" fill="#43a047"/>
+      <rect y="2" width="4" height="2" fill="#4caf50"/>
+    </pattern>
+  </defs>
+  <circle cx="16" cy="16" r="15" fill="url(#turf)" stroke="#222" stroke-width="2"/>
+  <polygon points="16,7 21,12 19,19 13,19 11,12" fill="#222"/>
+  <polygon points="16,7 13,19 19,19" fill="#fff"/>
+  <polygon points="11,12 13,19 7,16" fill="#222"/>
+  <polygon points="21,12 19,19 25,16" fill="#222"/>
+  <polygon points="7,16 13,19 10,25" fill="#222"/>
+  <polygon points="25,16 19,19 22,25" fill="#222"/>
+</svg>
