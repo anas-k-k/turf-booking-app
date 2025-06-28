@@ -1,0 +1,36 @@
+<div class="calendar-container">
+    <div class="date-picker">
+        <label for="date">Select Date:</label>
+        <input id="date" type="date" [(ngModel)]="selectedDate" />
+    </div>
+
+    <div class="slots-grid">
+        <div *ngFor="let slot of slots" class="slot" [class.booked]="isBooked(slot)"
+            [class.selected]="selectedSlots.includes(slot)" [class.disabled]="isBooked(slot)"
+            (click)="!isBooked(slot) && toggleSlot(slot)">
+            {{ to12HourFormat(slot) }}
+        </div>
+    </div>
+
+    <form class="booking-form" (ngSubmit)="book()">
+        <input type="text" placeholder="Your Name" [(ngModel)]="name" name="name" required />
+        <input type="tel" placeholder="Phone Number" [(ngModel)]="phone" name="phone" required />
+        <button type="submit" [disabled]="selectedSlots.length === 0 || !name || !phone">Book Selected Slots</button>
+    </form>
+
+    <div class="modal" *ngIf="showConfirm">
+        <div class="modal-content">
+            <h3>Confirm Booking</h3>
+            <p>Date: {{ selectedDate }}</p>
+            <p>Slots:
+                <ng-container *ngFor="let slot of selectedSlots; let last = last">
+                    {{ to12HourFormat(slot) }}<span *ngIf="!last">, </span>
+                </ng-container>
+            </p>
+            <div class="modal-actions">
+                <button (click)="confirmBooking()">Confirm</button>
+                <button (click)="cancelConfirm()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

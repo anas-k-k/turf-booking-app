@@ -19,6 +19,26 @@ export class BookingService {
   private bookings: Booking[] = [];
   private slotStatus: SlotStatus = {};
 
+  constructor() {
+    this.loadBookings();
+  }
+
+  private saveBookings() {
+    localStorage.setItem('bookings', JSON.stringify(this.bookings));
+    localStorage.setItem('slotStatus', JSON.stringify(this.slotStatus));
+  }
+
+  private loadBookings() {
+    const bookings = localStorage.getItem('bookings');
+    const slotStatus = localStorage.getItem('slotStatus');
+    if (bookings) {
+      this.bookings = JSON.parse(bookings);
+    }
+    if (slotStatus) {
+      this.slotStatus = JSON.parse(slotStatus);
+    }
+  }
+
   getBookingsForDate(date: string): Booking[] {
     return this.bookings.filter((b) => b.date === date);
   }
@@ -32,10 +52,15 @@ export class BookingService {
     for (const slot of booking.slots) {
       this.slotStatus[booking.date][slot] = 'booked';
     }
+    this.saveBookings();
   }
 
   isSlotBooked(date: string, slot: string): boolean {
     return this.slotStatus[date]?.[slot] === 'booked';
+  }
+
+  getAllBookings() {
+    return this.bookings;
   }
 
   // For future: cancelBooking, etc.
