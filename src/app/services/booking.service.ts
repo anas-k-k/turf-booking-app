@@ -79,5 +79,14 @@ export class BookingService {
     return this.bookings;
   }
 
+  // Returns a list of dates (YYYY-MM-DD) that have at least one booking
+  getDatesWithBookings(): string[] {
+    const dates = new Set<string>();
+    for (const booking of this.bookings) {
+      dates.add(booking.date);
+    }
+    return Array.from(dates);
+  }
+
   // For future: cancelBooking, etc.
 }
