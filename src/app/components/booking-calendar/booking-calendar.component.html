@@ -23,8 +23,10 @@
 
     <form class="booking-form" (ngSubmit)="book()">
         <input type="text" placeholder="Your Name" [(ngModel)]="name" name="name" required />
-        <input type="tel" placeholder="Phone Number" [(ngModel)]="phone" name="phone" required />
-        <button type="submit" [disabled]="selectedSlots.length === 0 || !name || !phone">Book Selected Slots
+        <input type="tel" placeholder="Phone Number" [(ngModel)]="phone" name="phone" required pattern="^[6-9][0-9]{9}$"
+            maxlength="10" minlength="10" />
+        <button type="submit" [disabled]="selectedSlots.length === 0 || !name || !phone || !isValidIndianPhone">Book
+            Selected Slots
         </button>
     </form>
 

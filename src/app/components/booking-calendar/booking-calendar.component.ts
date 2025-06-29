@@ -81,4 +81,9 @@ export class BookingCalendarComponent {
     else if (hour > 12) hour -= 12;
     return `${hour}:${min} ${ampm}`;
   }
+
+  // Helper for Indian phone validation
+  get isValidIndianPhone(): boolean {
+    return /^[6-9][0-9]{9}$/.test(this.phone);
+  }
 }
