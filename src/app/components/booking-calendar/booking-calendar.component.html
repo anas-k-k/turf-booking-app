@@ -1,7 +1,7 @@
 <div class="calendar-container">
     <div class="date-picker">
         <label for="date">Select Date:</label>
-        <input id="date" type="date" [(ngModel)]="selectedDate" />
+        <input id="date" type="date" [(ngModel)]="selectedDate" [min]="today.toISOString().slice(0, 10)" />
     </div>
 
     <div class="slots-grid">
